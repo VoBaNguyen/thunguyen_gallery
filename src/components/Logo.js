@@ -20,7 +20,7 @@ const Logo = () => {
           // fontFamily='M PLUS Rounded 1c", sans-serif'
           fontWeight="bold"
         >
-          ThuNguyen Galleries
+          ThuNguyen Gallery
         </Text>
       </Box>
     </Link>
