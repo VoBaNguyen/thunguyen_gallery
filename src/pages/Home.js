@@ -97,7 +97,6 @@ const HomeItem = ({ id, year, title, href }) => {
         transform: translateY(0);
         transition: all 0.75s ease 0.5s;
       }
-
       .tl-bg {
         filter: grayscale(0);
       }
@@ -158,7 +157,7 @@ const HomeItem = ({ id, year, title, href }) => {
     background-size: cover;
     background-position: center center;
     transition: filter 0.5s ease;
-    filter: grayscale(100%);
+    filter: grayscale(40%);
   `
 
   return (
