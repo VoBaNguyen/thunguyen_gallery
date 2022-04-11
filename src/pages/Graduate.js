@@ -2,6 +2,7 @@ import { Grid, GridItem, Text, useDisclosure } from '@chakra-ui/react'
 import React, { useEffect, useState } from 'react'
 import ImageGridImage from '../components/ImageGridItem'
 import ImageModal from '../components/ImageModal'
+import LazyLoad from '../components/LazyLoad'
 
 export default function Graduate({ chilren, title }) {
   const ImageConfig = [
@@ -33,16 +34,15 @@ export default function Graduate({ chilren, title }) {
 
   return (
     <>
-      <Grid templateColumns="repeat(7, 1fr)" gap={4}>
+      <Grid templateColumns="repeat(7, 1fr)" gap={2}>
         {ImageConfig.map(imgCfg => {
           return (
             <GridItem
               rowSpan={imgCfg.rowSpan}
               colSpan={imgCfg.colSpan}
-              bg="papayawhip"
               position="relative"
             >
-              <Text
+              {/* <Text
                 fontWeight="bold"
                 fontSize="20px"
                 position="absolute"
@@ -51,14 +51,16 @@ export default function Graduate({ chilren, title }) {
                 color="blue"
               >
                 {imgCfg.id}
-              </Text>
-              <ImageGridImage
-                id={imgCfg.id}
-                onClick={() => {
-                  setImgId(imgCfg.id)
-                  onOpen()
-                }}
-              />
+              </Text> */}
+              <LazyLoad delay={imgCfg.id * 0.1}>
+                <ImageGridImage
+                  src={`/images/graduate/graduate_${imgCfg.id}.jpg`}
+                  onClick={() => {
+                    setImgId(imgCfg.id)
+                    onOpen()
+                  }}
+                />
+              </LazyLoad>
             </GridItem>
           )
         })}

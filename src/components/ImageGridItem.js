@@ -1,14 +1,14 @@
 import { Image } from '@chakra-ui/react'
 
-export default function ImageGridImage({ id, onClick }) {
+export default function ImageGridImage({ src, onClick }) {
   return (
     <Image
       padding="2px"
-      src={`/images/graduate/graduate_${id}.jpg`}
+      src={src}
       height="100%"
       objectFit="cover"
       objectPosition="center center"
-      alt="Graduate Image"
+      alt="Grid Image"
       cursor="pointer"
       onClick={onClick}
     />

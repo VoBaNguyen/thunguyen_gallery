@@ -8,3 +8,5 @@ const Fonts = () => (
 )
 
 export default Fonts
+
+// font-family: 'Source Sans Pro',Helvetica Neue,Helvetica,Arial,sans-serif;

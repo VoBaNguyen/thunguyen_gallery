@@ -8,7 +8,7 @@ const NavBar = ({ maxW, ...props }) => {
   return (
     <Box
       position="fixed"
-      padding="5px"
+      padding="8px 5px"
       as="nav"
       w="100%"
       bg={useColorModeValue('#ffffff40', '#20202380')}

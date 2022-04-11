@@ -9,7 +9,7 @@ export default function Layout({ children, maxW }) {
       <Box as="main" pb={8} display="flex" justifyContent="center">
         <Fonts />
         <NavBar maxW="container.xl" />
-        <Container maxW={maxW} pt={20}>
+        <Container maxW={maxW} pt={20} height>
           {children}
         </Container>
       </Box>

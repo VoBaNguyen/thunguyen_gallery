@@ -16,13 +16,13 @@ export default function NavLinks(props) {
           Graduate
         </NavItem>
         <NavItem href="/with-svi" pathname={pathname}>
-          With SVI
+          Savarti
         </NavItem>
         <NavItem href="/dalat" pathname={pathname}>
-          Dalat
+          Da Lat
         </NavItem>
         <NavItem href="/unreleased" pathname={pathname}>
-          Unreleased
+          Unrevealed
         </NavItem>
       </Stack>
     </Box>

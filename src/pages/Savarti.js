@@ -2,6 +2,7 @@ import { Box, Image, useDisclosure } from '@chakra-ui/react'
 import { AnimatePresence, AnimateSharedLayout, motion } from 'framer-motion'
 import React, { useEffect, useState } from 'react'
 import ImageModal from '../components/ImageModal'
+import LazyLoad from '../components/LazyLoad'
 
 function ProductImage({ id, onExpand }) {
   return (
@@ -40,58 +41,61 @@ export default function Savarti({ title }) {
   }, [title])
 
   return (
-    <Box
-      width="100%"
-      height="80vh"
-      display="flex"
-      flexDirection="row"
-      overflow="hidden"
-      borderRadius="0.5rem"
-      position="relative"
-    >
-      <AnimateSharedLayout type="crossfade">
-        <Box width="85%" position="relative">
-          <AnimatePresence>
-            <motion.div
-              key={`product-${primaryProduct}`}
-              layoutId={`product-${primaryProduct}`}
-              position="absolute"
-              top="0"
-              left="0"
-            >
-              <Image
-                src={`/images/svi/svi_${primaryProduct}.jpg`}
-                objectFit="cover"
-                objectPosition="center center"
-                alt="Graduate Image"
-                width="100%"
-                height="80vh"
-                cursor="pointer"
-                onClick={onOpen}
-              />
-            </motion.div>
-          </AnimatePresence>
-        </Box>
-        <Box
-          display="flex"
-          flexDirection="column"
-          height="100%"
-          width="15%"
-          zIndex="1"
-          overflowY="scroll"
-        >
-          <AnimatePresence>
-            {productIds.map(id => (
-              <ProductImage id={id} key={id} onExpand={setAsPrimary} />
-            ))}
-          </AnimatePresence>
-        </Box>
-      </AnimateSharedLayout>
-      <ImageModal
-        isOpen={isOpen}
-        onClose={onClose}
-        src={`/images/svi/svi_${primaryProduct}.jpg`}
-      />
-    </Box>
+    <LazyLoad delay={0.1}>
+      <Box
+        width="100%"
+        height="80vh"
+        display="flex"
+        flexDirection="row"
+        overflow="hidden"
+        borderRadius="0.5rem"
+        position="relative"
+      >
+        <AnimateSharedLayout type="crossfade">
+          <Box width="85%" position="relative">
+            <AnimatePresence>
+              <motion.div
+                key={`product-${primaryProduct}`}
+                layoutId={`product-${primaryProduct}`}
+                position="absolute"
+                top="0"
+                left="0"
+              >
+                <Image
+                  src={`/images/svi/svi_${primaryProduct}.jpg`}
+                  objectFit="cover"
+                  objectPosition="center center"
+                  alt="Graduate Image"
+                  width="100%"
+                  height="80vh"
+                  cursor="pointer"
+                  onClick={onOpen}
+                />
+              </motion.div>
+            </AnimatePresence>
+          </Box>
+          <Box
+            display="flex"
+            flexDirection="column"
+            height="100%"
+            width="15%"
+            zIndex="1"
+            overflowY="scroll"
+          >
+            <AnimatePresence>
+              {productIds.map(id => (
+                <ProductImage id={id} key={id} onExpand={setAsPrimary} />
+              ))}
+            </AnimatePresence>
+          </Box>
+        </AnimateSharedLayout>
+
+        <ImageModal
+          isOpen={isOpen}
+          onClose={onClose}
+          src={`/images/svi/svi_${primaryProduct}.jpg`}
+        />
+      </Box>
+    </LazyLoad>
   )
 }
